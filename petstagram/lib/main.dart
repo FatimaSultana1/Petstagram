@@ -15,10 +15,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(Petstagram());
+  runApp(const Petstagram());
 }
 
 class Petstagram extends StatelessWidget {
+  const Petstagram({super.key});
+
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -38,23 +41,23 @@ class Petstagram extends StatelessWidget {
           builder: (context, snapshot) {
             // Check for errors
             if (snapshot.hasError) {
-              return Center(child: Text('Something went wrong!'));
+              return const Center(child: Text('Something went wrong!'));
             }
             // Once complete, show your application
             if (snapshot.connectionState == ConnectionState.active) {
               if (snapshot.hasData) {
                 // User is logged in
-                return ResponsiveLayout(
+                return const ResponsiveLayout(
                   mobileScreenLayout: MobileScreenLayout(),
                   webScreenLayout: WebScreenLayout(),
                 );
               } else {
                 // User is not logged in
-                return LoginScreen();
+                return const LoginScreen();
               }
             }
             // Otherwise, show something whilst waiting for initialization to complete
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           },
         ),
       ),
