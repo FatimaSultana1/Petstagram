@@ -1,7 +1,4 @@
-// lib/screens/add_post_screen.dart
-
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:petstagram/models/user.dart';
@@ -12,8 +9,7 @@ import 'package:petstagram/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class AddPostScreen extends StatefulWidget {
-  const AddPostScreen({Key? key}) : super(key: key);
-
+  const AddPostScreen({super.key}); 
   @override
   State<AddPostScreen> createState() => _AddPostScreenState();
 }
@@ -41,6 +37,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
     try {
       String res = await FirestoreMethods().uploadPost(
           _descriptionController.text, _file!, uid, username, profImage);
+      
+      if (!mounted) return;
+
       setState(() {
         isLoading = false;
       });
@@ -72,7 +71,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     return _file == null
         ? Center(
             child: IconButton(
-              icon: Icon(Icons.upload),
+              icon: const Icon(Icons.upload),
               onPressed: () => _selectImage(context),
             ),
           )
@@ -80,10 +79,10 @@ class _AddPostScreenState extends State<AddPostScreen> {
             appBar: AppBar(
               backgroundColor: mobileBackgroundColor,
               leading: IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: clearImage,
               ),
-              title: Text('Post to'),
+              title: const Text('Post to'),
               actions: [
                 TextButton(
                   onPressed: () => postImage(
@@ -91,7 +90,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     user.username,
                     user.photoUrl,
                   ),
-                  child: Text(
+                  child: const Text(
                     'Post',
                     style: TextStyle(
                         color: Colors.blueAccent,
@@ -103,8 +102,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
             ),
             body: Column(
               children: [
-                isLoading ? LinearProgressIndicator() : Container(),
-                Divider(),
+                isLoading ? const LinearProgressIndicator() : Container(),
+                const Divider(),
                 // Build UI similar to AddPostScreen in Wondershare
               ],
             ),

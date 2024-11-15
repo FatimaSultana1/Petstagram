@@ -10,9 +10,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 const webScreenSize = 600;
 
 List<Widget> homeScreenItems = [
-  FeedScreen(),
-  SearchScreen(),
-  AddPostScreen(),
-  Center(child: Text('Notifications')),
+  const FeedScreen(),
+  const SearchScreen(),
+  const AddPostScreen(),
+  const Center(child: Text('Notifications')),
   ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid),
 ];
