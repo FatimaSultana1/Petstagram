@@ -51,9 +51,9 @@ class _LoginScreenState extends State<LoginScreen> {
       // Navigate to home screen
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => ResponsiveLayout(
-            mobileScreenLayout: MobileScreenLayout(),
-            webScreenLayout: WebScreenLayout(),
+          builder: (context) => const ResponsiveLayout(
+            mobileScreenLayout:  MobileScreenLayout(),
+            webScreenLayout:  WebScreenLayout(),
           ),
         ),
       );
@@ -75,13 +75,13 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 32),
           width: double.infinity,
           child: ListView(
             children: [
-              SizedBox(height: 64),
+              const SizedBox(height: 64),
               // Logo or App Name
-              Center(
+              const Center(
                 child: Text(
                   'Petstagram',
                   style: TextStyle(
@@ -91,14 +91,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 64),
+              const SizedBox(height: 64),
               // Email
               TextFieldInput(
                 textEditingController: _emailController,
                 hintText: 'Enter your email',
                 textInputType: TextInputType.emailAddress,
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               // Password
               TextFieldInput(
                 textEditingController: _passwordController,
@@ -106,32 +106,32 @@ class _LoginScreenState extends State<LoginScreen> {
                 textInputType: TextInputType.text,
                 isPass: true,
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               // Login Button
               InkWell(
                 onTap: loginUser,
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(vertical: 12),
-                  decoration: ShapeDecoration(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: const ShapeDecoration(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(4))),
                     color: blueColor,
                   ),
                   child: _isLoading
-                      ? CircularProgressIndicator(color: primaryColor)
-                      : Text('Log in'),
+                      ? const CircularProgressIndicator(color: primaryColor)
+                      : const Text('Log in'),
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               // Navigate to Sign Up
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    child: Text("Don't have an account? "),
-                    padding: EdgeInsets.symmetric(vertical: 8),
+                    child: const Text("Don't have an account? "),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                   ),
                   GestureDetector(
                     onTap: navigateToSignup,
@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         'Sign up.',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                     ),
                   )
                 ],
