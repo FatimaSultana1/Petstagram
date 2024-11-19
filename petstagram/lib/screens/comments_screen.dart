@@ -28,7 +28,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Comments'),
+        title: const Text('Comments'),
         centerTitle: false,
       ),
       body: Column(
